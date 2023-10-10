@@ -5,6 +5,8 @@ import 'package:crypto_app/utility/app_font_weight.dart';
 import 'package:crypto_app/utility/app_spacing.dart';
 import 'package:crypto_app/widget/reusable_row.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
+
 
 
 class HomeScreen extends StatefulWidget {
@@ -123,7 +125,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                      marketCap: serviceData.data[index].numMarketPairs,
                                      nameOfProduct: serviceData.data[index].name,
                                      productAcronym: serviceData.data[index].symbol,
-                                     // productLogo: Image.network("$coinIconUrl.${serviceData.data[index].symbol.toLowerCase()}png",)
+                                     productLogo: CachedNetworkImage(
+                                       imageUrl: "$coinIconUrl.${serviceData.data[index].symbol.toLowerCase()}png",
+
+                                     ),
                                    );
 
                                  }

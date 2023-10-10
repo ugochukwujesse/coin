@@ -5,6 +5,7 @@ import 'package:crypto_app/utility/app_font_weight.dart';
 import 'package:crypto_app/utility/app_spacing.dart';
 import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 
 class ReusableRow extends StatefulWidget {
@@ -16,13 +17,13 @@ class ReusableRow extends StatefulWidget {
     required this.marketCap,
     required this.nameOfProduct,
     required this.productAcronym,
-    // required this.productLogo,
+    required this.productLogo,
   });
 
   final List<_SalesData> data;
   String number;
   String nameOfProduct;
-  // Widget productLogo;
+  Widget productLogo;
   double amount;
   String productAcronym;
   int marketCap;
@@ -40,7 +41,7 @@ class _ReusableRowState extends State<ReusableRow> {
         Row(
           children: [
             Container(
-              width:30,
+              width:AppSpacing.s30,
               child: Text(widget.number,
                 overflow: TextOverflow.ellipsis,
                 maxLines: 1,
@@ -52,36 +53,35 @@ class _ReusableRowState extends State<ReusableRow> {
               ),
             ),
             const SizedBox(width: AppSpacing.s10,),
-            // widget.productLogo,
+            widget.productLogo,
             const SizedBox(width: AppSpacing.s5,),
-            SizedBox(
-              width: 50,
-              child: Column(
-                crossAxisAlignment:CrossAxisAlignment.start,
-                children: [
-                  Text(widget.nameOfProduct,
-                    overflow: TextOverflow.ellipsis,
-                    style:const TextStyle(
-                      color: AppColour.white,
-                      fontWeight: AppFontWeight.w400,
-                      fontSize: AppFontSize.h16,
+            Container(
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment:CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.nameOfProduct,
+                      overflow: TextOverflow.ellipsis,
+                      style:const TextStyle(
+                        color: AppColour.white,
+                        fontWeight: AppFontWeight.w400,
+                        fontSize: AppFontSize.h16,
+                      ),
                     ),
-                  ),
-                  Text(widget.productAcronym,
-                    style: TextStyle(
-                      color: AppColour.white.withOpacity(0.5),
-                      fontSize: AppFontSize.h12,
-                      fontWeight: AppFontWeight.w300,
-                    ),
-                  )
-                ],
+                    Text(widget.productAcronym,
+                      style: TextStyle(
+                        color: AppColour.white.withOpacity(0.5),
+                        fontSize: AppFontSize.h12,
+                        fontWeight: AppFontWeight.w300,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             const Spacer(),
-            SizedBox(
-              height: 20,
-              width: 30,
-              child: Container(
+            Container(
+              child: Expanded(
                 child: SfSparkLineChart.custom(
                   width: 0.5,
                   axisLineWidth: 0,
