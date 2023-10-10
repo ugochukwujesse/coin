@@ -35,99 +35,110 @@ class _ReusableRowState extends State<ReusableRow> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        Container(
-          width:30,
-          child: Text(widget.number,
-            overflow: TextOverflow.ellipsis,
-            maxLines: 1,
-            style: const TextStyle(
-              color: AppColour.white,
-              fontSize: AppFontSize.h12,
-              fontWeight: AppFontWeight.w500,
-            ),
-          ),
-        ),
-        const SizedBox(width: AppSpacing.s10,),
-        // widget.productLogo,
-        const SizedBox(width: AppSpacing.s5,),
-        SizedBox(
-          width: 50,
-          child: Column(
-            crossAxisAlignment:CrossAxisAlignment.start,
-            children: [
-              Text(widget.nameOfProduct,
+        Row(
+          children: [
+            Container(
+              width:30,
+              child: Text(widget.number,
                 overflow: TextOverflow.ellipsis,
-                style:const TextStyle(
+                maxLines: 1,
+                style: const TextStyle(
                   color: AppColour.white,
-                  fontWeight: AppFontWeight.w400,
-                  fontSize: AppFontSize.h16,
-                ),
-              ),
-              Text(widget.productAcronym,
-                style: TextStyle(
-                  color: AppColour.white.withOpacity(0.5),
                   fontSize: AppFontSize.h12,
-                  fontWeight: AppFontWeight.w300,
+                  fontWeight: AppFontWeight.w500,
                 ),
-              )
-            ],
-          ),
-        ),
-        const Spacer(),
-        SizedBox(
-          height: 20,
-          width: 30,
-          child: Container(
-            child: SfSparkLineChart.custom(
-              width: 0.5,
-              axisLineWidth: 0,
-              trackball: const SparkChartTrackball(
-                  shouldAlwaysShow: false,
-                  activationMode: SparkChartActivationMode.tap),
-              marker: const SparkChartMarker(
-                borderWidth: 0,
-                displayMode: SparkChartMarkerDisplayMode.all,
               ),
-              // labelDisplayMode: SparkChartLabelDisplayMode.all,
-              xValueMapper: (int index) => widget.data[index].year,
-              yValueMapper: (int index) => widget.data[index].sales,
-              dataCount: 5,
             ),
-          ),
-        ),
-        const Spacer(),
-        Container(
-          child: Expanded(
-            child: Column(
-              crossAxisAlignment:CrossAxisAlignment.start,
-              children: [
-                Text(widget.amount.toString(),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: const TextStyle(
-                    color: AppColour.white,
-                    fontWeight: AppFontWeight.w400,
-                    fontSize: AppFontSize.h16,
+            const SizedBox(width: AppSpacing.s10,),
+            // widget.productLogo,
+            const SizedBox(width: AppSpacing.s5,),
+            SizedBox(
+              width: 50,
+              child: Column(
+                crossAxisAlignment:CrossAxisAlignment.start,
+                children: [
+                  Text(widget.nameOfProduct,
+                    overflow: TextOverflow.ellipsis,
+                    style:const TextStyle(
+                      color: AppColour.white,
+                      fontWeight: AppFontWeight.w400,
+                      fontSize: AppFontSize.h16,
+                    ),
                   ),
+                  Text(widget.productAcronym,
+                    style: TextStyle(
+                      color: AppColour.white.withOpacity(0.5),
+                      fontSize: AppFontSize.h12,
+                      fontWeight: AppFontWeight.w300,
+                    ),
+                  )
+                ],
+              ),
+            ),
+            const Spacer(),
+            SizedBox(
+              height: 20,
+              width: 30,
+              child: Container(
+                child: SfSparkLineChart.custom(
+                  width: 0.5,
+                  axisLineWidth: 0,
+                  trackball: const SparkChartTrackball(
+                      shouldAlwaysShow: false,
+                      activationMode: SparkChartActivationMode.tap),
+                  marker: const SparkChartMarker(
+                    borderWidth: 0,
+                    displayMode: SparkChartMarkerDisplayMode.all,
+                  ),
+                  // labelDisplayMode: SparkChartLabelDisplayMode.all,
+                  xValueMapper: (int index) => widget.data[index].year,
+                  yValueMapper: (int index) => widget.data[index].sales,
+                  dataCount: 5,
                 ),
-                Text(widget.marketCap.toString(),
-                  overflow: TextOverflow.ellipsis,
-                  maxLines: 1,
-                  style: TextStyle(
-                    color: AppColour.white.withOpacity(0.5),
-                    fontSize: AppFontSize.h12,
-                    fontWeight: AppFontWeight.w300,
-                  ),
-                )
-              ],
+              ),
             ),
-          ),
-        ),
+            const Spacer(),
+            Container(
+              child: Expanded(
+                child: Column(
+                  crossAxisAlignment:CrossAxisAlignment.start,
+                  children: [
+                    Text(widget.amount.toString(),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: const TextStyle(
+                        color: AppColour.white,
+                        fontWeight: AppFontWeight.w400,
+                        fontSize: AppFontSize.h16,
+                      ),
+                    ),
+                    Text(widget.marketCap.toString(),
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      style: TextStyle(
+                        color: AppColour.white.withOpacity(0.5),
+                        fontSize: AppFontSize.h12,
+                        fontWeight: AppFontWeight.w300,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
 
+          ],
+        ),
+        const  SizedBox(height: AppSpacing.s5,),
+         Divider(
+          thickness: 1,
+          color: AppColour.white.withOpacity(0.3),
+        ),
+        const SizedBox(height: AppSpacing.s5,)
       ],
     );
+
   }
 }
 
