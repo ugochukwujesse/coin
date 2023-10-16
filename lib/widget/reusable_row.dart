@@ -40,20 +40,24 @@ class _ReusableRowState extends State<ReusableRow> {
       children: [
         Row(
           children: [
-            Container(
-              width:AppSpacing.s30,
-              child: Text(widget.number,
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                style: const TextStyle(
-                  color: AppColour.white,
-                  fontSize: AppFontSize.h12,
-                  fontWeight: AppFontWeight.w500,
+            Expanded(
+              child: Container(
+                width:AppSpacing.s20,
+                child: Text(widget.number,
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 1,
+                  style: const TextStyle(
+                    color: AppColour.white,
+                    fontSize: AppFontSize.h12,
+                    fontWeight: AppFontWeight.w500,
+                  ),
                 ),
               ),
             ),
-            const SizedBox(width: AppSpacing.s10,),
-            widget.productLogo,
+
+            Container(child:
+            Expanded(child: widget.productLogo)
+            ),
             const SizedBox(width: AppSpacing.s5,),
             Container(
               child: Expanded(
